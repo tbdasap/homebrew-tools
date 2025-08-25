@@ -15,7 +15,8 @@ class SputavaakNr < Formula
   ## End dependency
   def install
     cd "sputavaak-nr" do
-      virtualenv_install_with_resources
+        puts "Current working directory: #{Dir.pwd}"
+        virtualenv_install_with_resources
     end
   end
 

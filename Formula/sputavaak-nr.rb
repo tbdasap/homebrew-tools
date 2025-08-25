@@ -9,18 +9,16 @@ class SputavaakNr < Formula
 
   depends_on "python@3.12"
 
-  ##  resource: Insert dependency requirements here. 
-  
-  
-  ## End dependency
   def install
-    cd "sputavaak-nr" do
-        puts "Current working directory: #{Dir.pwd}"
-        virtualenv_install_with_resources
-    end
+    # Create virtualenv under libexec
+    venv = virtualenv_create(libexec, "python3.12")
+
+    # Install this package (torch/torchaudio will be resolved by pip)
+    venv.pip_install_and_link buildpath
   end
 
   test do
-    system bin/"sputavaak-nr", "--help"
+    # Replace with whatever your CLI entrypoint is
+    system "#{bin}/sputavaak-nr", "--help"
   end
-end
+ end
